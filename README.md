@@ -1,6 +1,7 @@
 # WOS-spider
 Python script to crawl Web of Science retrieved papers based on selenium package.\
-基于selenium包，爬取Web of Science检索的论文信息的Python脚本
+1.本代码是【基于selenium包】的，分析页面等相对容易一些，爬取Web of Science检索的论文信息的Python脚本
+2.如果不使用selenium包，从https://www.webofscience.com/wos/alldb/basic-search这个页面开始，提交一篇文章topic后，会跳转到一个相关话题(relevance)的页面，网址形式为https://webofscience.clarivate.cn/wos/alldb/summary/d177bebd-917e-4dd5-8bb6-5181e44c41a5-dba073ef/relevance/1，里面涉及一个uuid码，这里的难点在于：它不同于百度的搜索页面搜索内容时，可以很容易看出跳转网页的url（例：https://www.baidu.com/s?ie=UTF-8&wd=%E7%88%AC%E8%99%AB，%E7%88%AC%E8%99%AB是“爬虫”的UTF-8编码，从而表示搜索爬虫.）但是WOS中的relevance页面的url如何得到并不清楚，因此如何提交文章的topic或title就成了一个大问题？大致需要进行js逆向中的诸多内容，AES加密,Unicode，Base64编码等。当请求到relevance页面的时，问题就变的相对简单了，由于我所在的机构购买了WOS数据库，因此页面中大概率是存在免费下载pdf的链接的。请求该链接，并使用"wb"保存为pdf即可.
 
 ## 思路
 
